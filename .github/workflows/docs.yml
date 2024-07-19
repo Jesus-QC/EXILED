@@ -47,7 +47,6 @@ jobs:
         run: docfx docfx.json; docfx docfx.json
         
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && success() # Only publishes on push to master to avoid docs mishaps
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
