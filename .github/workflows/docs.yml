@@ -50,7 +50,7 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: _site
+          build_dir: EXILED/_site
           keep_history: true
           jekyll: false
         env:
