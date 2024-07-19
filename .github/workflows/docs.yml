@@ -44,13 +44,13 @@ jobs:
       - name: Run DocFX
         env:
           EXILED_REFERENCES: ${{ env.EXILED_REFERENCES_PATH }}
-        run: docfx docfx.json; docfx docfx.json
+        run: docfx docfx.json; docfx build docfx.json
         
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: EXILED/_site
+          build_dir: _site
           keep_history: true
           jekyll: false
         env:
