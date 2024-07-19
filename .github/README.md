@@ -1,4 +1,4 @@
-<h1 align="center">Exiled</h1>
+.<h1 align="center">Exiled</h1>
 <h6 align="center">EXtended In-runtime Library for External Development</h6>
 <div align="center">
     Join our
