@@ -7,14 +7,11 @@
 
 namespace Exiled.CreditTags.Features
 {
-    using System;
     using System.Collections.Generic;
-    using System.Net;
-    using System.Threading.Tasks;
 
+    using Exiled.API.Features;
     using MEC;
-
-    using UnityEngine;
+    using UnityEngine.Networking;
 
     internal sealed class ThreadSafeRequest
     {
@@ -29,17 +26,17 @@ namespace Exiled.CreditTags.Features
         public string Result { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether or not it was successful.
+        /// Gets a value indicating whether it was successful.
         /// </summary>
         public bool Success { get; private set; }
 
         /// <summary>
         /// Gets the HTTP Status Code.
         /// </summary>
-        public HttpStatusCode Code { get; private set; }
+        public long Code { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether or not the request was successful.
+        /// Gets a value indicating whether the request was successful.
         /// </summary>
         public bool Done => done;
 
@@ -47,34 +44,52 @@ namespace Exiled.CreditTags.Features
         /// Gets the call to the website to obtain users to their roles.
         /// </summary>
         /// <param name="url">The URL.</param>
-        /// <param name="errorHandler">The error handling <see cref="Action{T1}"/>.</param>
-        /// <param name="resultHandler">The result handling <see cref="Action{T1}"/>.</param>
-        /// <param name="issuer">The <see cref="GameObject"/> issuing the request.</param>
-        public static void Go(string url, Action<ThreadSafeRequest> errorHandler, Action<string> resultHandler, GameObject issuer)
+        /// <param name="etag">The entity tag of the request.</param>
+        public static void Go(string url, string etag)
         {
-            Timing.RunCoroutine(MakeRequest(url, errorHandler, resultHandler).CancelWith(issuer), Segment.LateUpdate);
+            Timing.RunCoroutine(MakeRequest(url, etag), Segment.LateUpdate);
         }
 
-        private static IEnumerator<float> MakeRequest(string url, Action<ThreadSafeRequest> errorHandler, Action<string> resultHandler)
+        private static IEnumerator<float> MakeRequest(string url, string etag)
         {
             ThreadSafeRequest request = new();
 
-            Task.Run(
-                () =>
+            UnityWebRequest webRequest = UnityWebRequest.Get(url);
+            webRequest.SetRequestHeader("User-Agent", "Exiled.CreditTags");
+            webRequest.SetRequestHeader("If-None-Match", etag);
+
+            yield return Timing.WaitUntilDone(webRequest.SendWebRequest());
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                request.Result = webRequest.downloadHandler.text;
+                request.Success = true;
+                request.Code = webRequest.responseCode;
+
+                // Content Not Modified
+                if (webRequest.responseCode == 304)
                 {
-                    request.Result = HttpQuery.Get(url, out bool success, out HttpStatusCode code);
-                    request.Success = success;
-                    request.Code = code;
+                    Log.Debug($"{nameof(MakeRequest)}: Response: Not Modified Code: {request.Code}, using cache.");
+                }
+                else
+                {
+                    string newETag = webRequest.GetResponseHeader("Etag");
+                    if (!string.IsNullOrEmpty(newETag))
+                    {
+                        DatabaseHandler.SaveETag(newETag);
+                    }
 
-                    request.done = true;
-                });
-
-            yield return Timing.WaitUntilTrue(() => request.done);
-
-            if (request.Success)
-                resultHandler(request.Result);
+                    DatabaseHandler.ProcessData(request.Result);
+                }
+            }
             else
-                errorHandler(request);
+            {
+                request.Success = false;
+                request.Code = webRequest.responseCode;
+                Log.Debug($"{nameof(MakeRequest)}: Response: {request.Result} Code: {request.Code}");
+            }
+
+            request.done = true;
         }
     }
 }

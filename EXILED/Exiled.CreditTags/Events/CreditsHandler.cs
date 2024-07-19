@@ -7,8 +7,8 @@
 
 namespace Exiled.CreditTags.Events
 {
+    using Exiled.CreditTags.Features;
     using Exiled.Events.EventArgs.Player;
-
     using MEC;
 
     using static CreditTags;
@@ -24,7 +24,8 @@ namespace Exiled.CreditTags.Events
         /// <param name="ev"><inheritdoc cref="VerifiedEventArgs"/></param>
         public void OnPlayerVerify(VerifiedEventArgs ev)
         {
-            Timing.CallDelayed(0.5f, () => Instance.ShowCreditTag(ev.Player, null, null));
+            DatabaseHandler.UpdateData();
+            Timing.CallDelayed(0.5f, () => Instance.ShowCreditTag(ev.Player));
         }
     }
 }

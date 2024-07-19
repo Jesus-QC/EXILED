@@ -7,6 +7,9 @@
 
 namespace Exiled.CreditTags.Enums
 {
+    /// <summary>
+    /// Represents all the ways a rank can be shown.
+    /// </summary>
     public enum InfoSide
     {
         /// <summary>
