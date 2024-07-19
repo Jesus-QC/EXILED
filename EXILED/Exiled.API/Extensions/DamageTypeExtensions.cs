@@ -18,7 +18,7 @@ namespace Exiled.API.Extensions
     /// <summary>
     /// A set of extensions for <see cref="DamageType"/>.
     /// </summary>
-    public static class DamageTypeExtensionsw
+    public static class DamageTypeExtensionswdadsa
     {
         private static readonly Dictionary<byte, DamageType> TranslationIdConversionInternal = new()
         {
