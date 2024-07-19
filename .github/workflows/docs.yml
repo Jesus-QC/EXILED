@@ -64,6 +64,7 @@ jobs:
       with:
         # Upload entire repository
         path: '_site'
+        target_branch: gh-pages
 
     - name: Deploy to GitHub Pages
       id: deployment
