@@ -4,16 +4,13 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 defaults:
   run:
     working-directory: ./EXILED
 
 env:
-  EXILED_REFERENCES_URL: https://misaka-zerotwo.github.io/SL-References/Master.zip
+  EXILED_REFERENCES_URL: https://Exiled-Official.github.io/SL-References/Dev.zip
   EXILED_REFERENCES_PATH: ${{ github.workspace }}/EXILED/References
   
 jobs:
@@ -33,8 +30,8 @@ jobs:
       - name: Get references
         shell: pwsh
         run: |
-          Invoke-WebRequest -Uri ${{ EXILED_REFERENCES_URL }} -OutFile ${{ github.workspace }}/EXILED/References.zip
-          Expand-Archive -Path References.zip -DestinationPath ${{ env.EXILED_REFERENCES_PATH }}
+          Invoke-WebRequest -Uri $env:EXILED_REFERENCES_URL -OutFile $env:GITHUB_WORKSPACE/EXILED/References.zip
+          Expand-Archive -Path $env:GITHUB_WORKSPACE/EXILED/References.zip -DestinationPath $env:EXILED_REFERENCES_PATH
         
       - name: Download DocFX
         uses: crazy-max/ghaction-chocolatey@v1
@@ -47,7 +44,7 @@ jobs:
         run: docfx docfx.json; docfx docfx.json
         
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && success() #Only publishes on push to master to avoid docs mishaps
+        if: github.event_name == 'push' && success() # Only publishes on push to master to avoid docs mishaps
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
