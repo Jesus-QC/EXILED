@@ -3,7 +3,13 @@
     {
       "src": [
         {
-          "files": [ "EXILED.sln" ]
+          "files": [
+            "**/*.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
         }
       ],
       "dest": "obj/docs/api",
