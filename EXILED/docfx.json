@@ -1,4 +1,5 @@
 {
+  "template":["default","templates/singulinkfx"],
   "metadata": [
     {
       "src": [
