@@ -28,26 +28,19 @@ namespace Exiled.CreditTags.Commands
         /// <inheritdoc/>
         public string Description { get; } = "Shows your EXILED Credits tag, if available.";
 
-        /// <inheritdoc />
-        public bool SanitizeResponse { get; }
-
         /// <inheritdoc/>
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             CommandSender cmdSender = (CommandSender)sender;
 
-            if (!(Player.Get(cmdSender.SenderId) is Player player))
+            if (Player.Get(cmdSender.SenderId) is not Player player)
             {
                 response = "You cannot use this command while still authenticating.";
                 return false;
             }
 
-            void ErrorHandler() => cmdSender.RaReply("An error has occurred.", false, true, string.Empty);
-            void SuccessHandler() => cmdSender.RaReply("Enjoy your credit tag!", true, true, string.Empty);
-
-            bool cached = CreditTags.Instance.ShowCreditTag(player, ErrorHandler, SuccessHandler, true);
-
-            response = cached ? "Your credit tag has been shown." : "Hold on...";
+            bool found = CreditTags.Instance.ShowCreditTag(player, true);
+            response = found ? "Your credit tag has been shown." : "You do not own a credit tag.";
             return true;
         }
     }

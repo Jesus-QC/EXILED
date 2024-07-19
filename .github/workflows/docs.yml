@@ -46,7 +46,7 @@ jobs:
           EXILED_REFERENCES: ${{ env.EXILED_REFERENCES_PATH }}
         run: docfx docfx.json; docfx docfx.json
         
-      - name: Deploy to GitHub Pagesw
+      - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
