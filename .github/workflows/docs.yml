@@ -44,7 +44,9 @@ jobs:
       - name: Run DocFX
         env:
           EXILED_REFERENCES: ${{ env.EXILED_REFERENCES_PATH }}
-        run: docfx docfx.json; docfx docfx.json
+        run:  |
+          docfx metadata docfx.json
+          docfx build docfx.json
         
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
