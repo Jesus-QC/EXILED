@@ -15,7 +15,7 @@ defaults:
 env:
   EXILED_REFERENCES_URL: https://Exiled-Official.github.io/SL-References/Dev.zip
   EXILED_REFERENCES_PATH: ${{ github.workspace }}/EXILED/References
-  
+
 jobs:
   build_and_publish_docs:
     runs-on: windows-latest
@@ -44,7 +44,26 @@ jobs:
       - name: Run DocFX
         env:
           EXILED_REFERENCES: ${{ env.EXILED_REFERENCES_PATH }}
-        run: docfx docfx.json; docfx docfx.json
+        run:  |
+          docfx metadata docfx.json
+          docfx build docfx.json
+
+      - name: List ../ Directory
+        run: |
+          echo "Contents of the ../ directory:"
+          dir ../
+
+      - name: List ./ Directory
+        run: |
+          echo "Contents of the ./ directory:"
+          dir ./
+
+      - name: Verify Build Directory
+        run: |
+          if (-not (Test-Path -Path "_site")) {
+            Write-Error "Build directory '_site' does not exist"
+            exit 1
+          }
         
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
