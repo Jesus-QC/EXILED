@@ -12,6 +12,7 @@
           ]
         }
       ],
+      "dest": "api",
       "filter": "docs/filterConfig.yml"
     }
   ],
@@ -19,22 +20,26 @@
     "template": ["default", "templates/singulinkfx"],
     "content": [
       {
-        "src": "obj/docs/",
-        "files": ["**/*.yml"]
+        "files": [
+          "api/**.yml",
+          "api/index.md",
+          "toc.yml"
+        ]
       },
       {
-        "src": "docs",
-        "files": ["**/*.md"]
-      },
-      {
-        "files": ["toc.yml", "docs/articles/toc.yml"]
+        "files": [
+          "articles/**.md"
+        ]
       }
     ],
     "resource": [
       {
-        "files": ["assets/**"]
+        "files": [
+          "assets/**"
+        ]
       }
     ],
+    "dest": "_site"
     "globalMetadata": {
       "_appTitle": "EXILED",
       "_enableSearch": true,
