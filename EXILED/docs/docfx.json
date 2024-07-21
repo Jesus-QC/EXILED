@@ -23,8 +23,8 @@
       "_gitContribute": {
         "repo": "https://github.com/Exiled-Official/EXILED",
         "branch": "dev"
-      },
-    }
+      }
+    },
     "template": ["default", "modern"],
     "content": [
       {
@@ -32,7 +32,7 @@
           "api/**.yml",
           "api/index.md",
           "toc.yml",
-          "*.md",
+          "*.md"
         ]
       },
       {
@@ -48,6 +48,6 @@
         ]
       }
     ],
-    "dest": "_site",
+    "dest": "_site"
   }
 }
