@@ -1,6 +1,4 @@
 - name: API Documentation
-  href: api/
-  homepage: api/Exiled.API.Enums.html
+  href: api/Exiled.API.Enums.html
 - name: Repository
   href: https://github.com/Exiled-Official/EXILED
-  homepage: https://github.com/Exiled-Official/EXILED
