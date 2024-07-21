@@ -1,4 +1,3 @@
-
 <div align="center">
     <img height=75 src="https://github.com/user-attachments/assets/47f65093-2fac-4335-9cf0-dda00ea21dca" alt="EXILED SCPSL MODDING FRAMEWORK"/>
 </div>
