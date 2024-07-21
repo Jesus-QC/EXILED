@@ -12,7 +12,6 @@
           ]
         }
       ],
-      "dest": "api",
       "filter": "docs/filterConfig.yml"
     }
   ],
