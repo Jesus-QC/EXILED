@@ -12,12 +12,11 @@
           ]
         }
       ],
-      "dest": "output",
       "filter": "docs/filterConfig.yml"
     }
   ],
   "build": {
-    "template":["default","templates/singulinkfx"],
+    "template": ["default", "templates/singulinkfx"],
     "content": [
       {
         "src": "obj/docs/",
