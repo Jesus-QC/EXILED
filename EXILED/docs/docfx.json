@@ -13,6 +13,7 @@
           "src": "../"
         }
       ],
+      "dest": "api",
       "filter": "filterConfig.yml"
     }
   ],
