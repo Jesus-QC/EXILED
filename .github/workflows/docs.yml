@@ -47,6 +47,28 @@ jobs:
         run:  |
           docfx metadata docfx.json
           docfx build docfx.json
+
+      - name: List _site Directory
+        run: |
+          echo "Contents of the _site directory:"
+          dir _site
+
+      - name: List ../ Directory
+        run: |
+          echo "Contents of the ../ directory:"
+          dir ../
+
+      - name: List ./ Directory
+        run: |
+          echo "Contents of the ./ directory:"
+          dir ./
+
+      - name: Verify Build Directory
+        run: |
+          if (-not (Test-Path -Path "_site")) {
+            Write-Error "Build directory '_site' does not exist"
+            exit 1
+          }
         
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
