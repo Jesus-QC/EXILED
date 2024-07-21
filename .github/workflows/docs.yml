@@ -48,11 +48,6 @@ jobs:
           docfx metadata docfx.json
           docfx build docfx.json
 
-      - name: List _site Directory
-        run: |
-          echo "Contents of the _site directory:"
-          dir _site
-
       - name: List ../ Directory
         run: |
           echo "Contents of the ../ directory:"
