@@ -23,7 +23,7 @@
       "_appLogoPath": "assets/exiled.png",
       "_appFaviconPath": "assets/favicon.ico",
       "_enableSearch": true,
-      "_lang": "en"
+      "_lang": "en",
       "_gitContribute": {
         "repo": "https://github.com/Exiled-Official/EXILED",
         "branch": "dev"
