@@ -36,6 +36,3 @@ You should now be able to open the EXILED directory in your favorite IDE.
 Once you are done, test your changes thoroughly, and then submit a pull request to the main EXILED repository. Make sure you are targeting the `dev` branch, not `master`!
 
 Happy coding!
-
-## Contributing docs
-Documentation is built using [Docosaurus](https://docusaurus.io/docs)

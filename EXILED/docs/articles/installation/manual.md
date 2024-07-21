@@ -10,8 +10,6 @@ You can download exiled manually following this steps:
 
 You can select a release inside [our official GitHub repo](https://github.com/Exiled-Official/EXILED/releases/).
 
-![Exiled Release](/img/docs/Release.png)
-
 ### Download the release
 
 Download the `Exiled.tar.gz` file and extract it with your favourite tool, we recommend [7Zip](https://www.7-zip.org/) or [WinRar](https://www.win-rar.com/download.html?&L=6).

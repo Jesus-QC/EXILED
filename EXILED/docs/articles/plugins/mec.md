@@ -2,11 +2,7 @@
 title: MEC (More Effective Coroutines)
 ---
 
-:::caution
-
-This tutorial assumes that you are familiar with C# and with setting up a plugin in the EXILED framework. See the [Plugin Structure](/docs/plugins/Plugin%20Structure) tutorial if you are unfamiliar with setting up a plugin using **EXILED**.
-
-:::
+This tutorial assumes that you are familiar with C# and with setting up a plugin in the EXILED framework. See the Plugin Structure tutorial if you are unfamiliar with setting up a plugin using **EXILED**.
 
 # MEC (More Effective Coroutines)
 If you are unfamiliar with MEC, this will be a very brief and simple primer to get you started. **MEC Coroutines** are basically timed methods, that support waiting periods of time before continuing execution, without interrupting/sleeping the main game thread. MEC coroutines are safe to use with Unity, unlike traditional threading, which *will* crash the server.

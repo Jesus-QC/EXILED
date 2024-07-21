@@ -2,11 +2,7 @@
 title: Plugin Structure
 ---
 
-:::caution
-
 This tutorial assumes that you are familiar with C#.
-
-:::
 
 ### Plugin Structure
 In order to be loaded onto the framework, *every* plugin must follow a certain structure and inherit from certain members. If this is not achieved, the plugin will not execute. This tutorial will explain the proper setup for a plugin on the EXILED framework.
