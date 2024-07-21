@@ -25,14 +25,14 @@
         "branch": "dev"
       },
     }
-    "template": ["default", "templates/singulinkfx"],
+    "template": ["default", "modern"],
     "content": [
       {
         "files": [
           "api/**.yml",
           "api/index.md",
           "toc.yml",
-          "*.md".
+          "*.md",
         ]
       },
       {
