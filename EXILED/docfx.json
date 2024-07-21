@@ -39,7 +39,7 @@
         ]
       }
     ],
-    "dest": "_site"
+    "dest": "_site",
     "globalMetadata": {
       "_appTitle": "EXILED",
       "_enableSearch": true,
