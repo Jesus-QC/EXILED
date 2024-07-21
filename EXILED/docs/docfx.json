@@ -42,6 +42,7 @@
       },
       {
         "files": [
+          "articles/toc.yml",
           "articles/**.md"
         ]
       }
