@@ -1,3 +1,6 @@
+<div align="center">
+    <img height=75 src="https://github.com/user-attachments/assets/47f65093-2fac-4335-9cf0-dda00ea21dca" alt="EXILED SCPSL MODDING FRAMEWORK"/>
+</div>
 <h1 align="center">Exiled</h1>
 <h6 align="center">EXtended In-runtime Library for External Development</h6>
 <div align="center">
