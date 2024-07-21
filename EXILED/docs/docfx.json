@@ -13,7 +13,7 @@
           "src": "../"
         }
       ],
-      "filter": "docs/filterConfig.yml"
+      "filter": "filterConfig.yml"
     }
   ],
   "build": {
