@@ -13,7 +13,6 @@
           ]
         }
       ],
-      "dest": "obj/docs/api",
       "filter": "docs/filterConfig.yml"
     }
   ],
