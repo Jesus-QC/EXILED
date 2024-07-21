@@ -2,7 +2,6 @@
 title: Home
 ---
 # Exiled
-### EXtended In-runtime Library for External Development
 Join our [Discord](https://discord.gg/PyUkWTg) for support.
 
 EXILED is a plugin framework for SCP: Secret Laboratory servers. It offers an event system for developers to hook into in order to manipulate or change game code or implement their own functions.
