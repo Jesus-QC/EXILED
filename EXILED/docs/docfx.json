@@ -9,20 +9,30 @@
           "exclude": [
             "**/bin/**",
             "**/obj/**"
-          ]
+          ],
+          "src": "../"
         }
       ],
       "filter": "docs/filterConfig.yml"
     }
   ],
   "build": {
+     "globalMetadata": {
+      "_appTitle": "EXILED",
+      "_enableSearch": true,
+      "_gitContribute": {
+        "repo": "https://github.com/Exiled-Official/EXILED",
+        "branch": "dev"
+      },
+    }
     "template": ["default", "templates/singulinkfx"],
     "content": [
       {
         "files": [
           "api/**.yml",
           "api/index.md",
-          "toc.yml"
+          "toc.yml",
+          "*.md".
         ]
       },
       {
@@ -39,15 +49,5 @@
       }
     ],
     "dest": "_site",
-    "globalMetadata": {
-      "_appTitle": "EXILED",
-      "_enableSearch": true,
-      "_gitContribute": {
-        "repo": "https://github.com/Exiled-Official/EXILED",
-        "branch": "dev"
-      },
-      "_appLogoPath": "assets/Exiled_Icon_50x50.png",
-      "_appFaviconPath": "assets/Exiled_Icon.ico"
-    }
   }
 }
