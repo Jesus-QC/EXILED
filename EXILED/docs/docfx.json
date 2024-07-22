@@ -20,6 +20,7 @@
   ],
   "build": {
      "globalMetadata": {
+      "htmlExtension": false,
       "_appTitle": "EXILED",
       "_appLogoPath": "assets/exiled.png",
       "_appFaviconPath": "assets/favicon.ico",
